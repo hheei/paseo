@@ -122,7 +122,8 @@
     "release:promote": "npm run release:check && npm run version:all:promote && npm run release:publish && npm run release:push",
     "release:patch": "npm run release:check && npm run version:all:patch && npm run release:publish && npm run release:push",
     "release:minor": "npm run release:check && npm run version:all:minor && npm run release:publish && npm run release:push",
-    "release:major": "npm run release:check && npm run version:all:major && npm run release:publish && npm run release:push"
+    "release:major": "npm run release:check && npm run version:all:major && npm run release:publish && npm run release:push",
+    "sync:mac": "rsync -avz --exclude='node_modules' --exclude='.dev' --exclude='artifacts' . supercgor@100.96.2.36:~/Projects/paseo/ && ssh supercgor@100.96.2.36 'cd ~/Projects/paseo && npm run build:server && ~/.local/bin/paseo daemon restart && ~/.local/bin/paseo daemon status'"
   },
   "devDependencies": {
     "@types/ws": "^8.5.14",
