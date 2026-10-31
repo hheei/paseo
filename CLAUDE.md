@@ -108,7 +108,10 @@ npm run typecheck                    # Always run after changes
 npm run lint                         # Always run after changes
 npm run format                       # Auto-format with Biome
 npm run format:check                 # Check formatting without writing
+npm run sync:mac                     # Sync source, rebuild, and restart daemon on remote Mac
 ```
+
+Use `npm run sync:mac` to rsync changes, rebuild, and restart the daemon on the remote Mac over Tailscale.
 
 Repo dev commands use checkout-local state by default. In this checkout, `PASEO_HOME` resolves to `.dev/paseo-home`, and `npm run cli -- ...` targets that same dev home automatically. The packaged desktop app and production-style daemon keep using `~/.paseo` on port `6767`.
 
