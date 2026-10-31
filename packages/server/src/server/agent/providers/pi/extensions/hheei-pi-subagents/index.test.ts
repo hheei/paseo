@@ -286,4 +286,61 @@ describe("@hheei/pi-subagents adapter", () => {
       }),
     ).toBeUndefined();
   });
+
+  test("handles 0.9.0 hex subagent IDs (e.g. agent-3f9a1c)", () => {
+    const host = createPiExtensionHost(undefined, [hheeiPiSubagents]);
+    const hexId = "agent-3f9a1c";
+
+    // 1. Initial delegate
+    host.mapToolCall({
+      callId: "spawn-hex",
+      toolName: "agents_delegate",
+      args: { ...delegateArgs, wait: false },
+      status: "completed",
+      result: {
+        details: {
+          id: hexId,
+          revision: 1,
+          status: "running",
+          task: delegateArgs.task,
+          agent: "scout",
+          hasOutput: false,
+        },
+      },
+    });
+
+    // 2. Report via subagent-report
+    const reportMapping = host.mapCustomMessage({
+      role: "custom",
+      customType: "subagent-report",
+      content: "Task done",
+      details: {
+        reports: [
+          {
+            childId: hexId,
+            agent: "scout",
+            task: delegateArgs.task,
+            status: "completed",
+            reason: "normal",
+            message: "Hex ID child finished",
+          },
+        ],
+      },
+    });
+
+    expect(reportMapping?.subagents).toEqual([
+      {
+        type: "upsert",
+        id: "spawn-hex",
+        title: "scout",
+        description: delegateArgs.task,
+        status: "completed",
+      },
+      {
+        type: "timeline",
+        id: "spawn-hex",
+        item: { type: "assistant_message", text: "Hex ID child finished" },
+      },
+    ]);
+  });
 });
