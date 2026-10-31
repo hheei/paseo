@@ -1,0 +1,42 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "npm dist-tag (e.g. latest, beta)"
+        required: true
+        default: "latest"
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    name: Publish @hheei packages to npm
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Build server dependencies & packages
+        run: npm run build:server
+
+      - name: Publish @hheei/paseo-server
+        run: npm publish --workspace=@hheei/paseo-server --access public --provenance --tag ${{ inputs.tag || 'latest' }}
+
+      - name: Publish @hheei/paseo-cli
+        run: npm publish --workspace=@hheei/paseo-cli --access public --provenance --tag ${{ inputs.tag || 'latest' }}

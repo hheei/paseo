@@ -12,7 +12,7 @@ import { existsSync, readdirSync, readFileSync, rmSync, writeFileSync } from "no
 import { mkdtemp, mkdir, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { readDaemonInstance } from "@getpaseo/server/daemon-control";
+import { readDaemonInstance } from "@hheei/paseo-server/daemon-control";
 import { runLocalPaseo } from "./helpers/local-cli.ts";
 import { getAvailablePort } from "./helpers/network.ts";
 

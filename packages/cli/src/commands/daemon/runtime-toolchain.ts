@@ -1,5 +1,5 @@
 import { platform } from "node:os";
-import { execCommand } from "@getpaseo/server/process";
+import { execCommand } from "@hheei/paseo-server/process";
 
 export interface NodePathFromPidResult {
   nodePath: string | null;

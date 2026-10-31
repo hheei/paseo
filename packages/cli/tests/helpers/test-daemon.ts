@@ -18,7 +18,7 @@ import { tmpdir } from "os";
 import { join } from "path";
 import { fileURLToPath } from "url";
 import { ChildProcess, spawn } from "child_process";
-import { readDaemonInstance } from "@getpaseo/server/daemon-control";
+import { readDaemonInstance } from "@hheei/paseo-server/daemon-control";
 
 export interface TestDaemonContext {
   /** Available local port for test daemon (never 6767) */

@@ -2,7 +2,7 @@ import { Command, Option } from "commander";
 import {
   getStructuredAgentResponse,
   StructuredAgentResponseError,
-} from "@getpaseo/server/agent-response";
+} from "@hheei/paseo-server/agent-response";
 import type { AgentSnapshotPayload } from "@getpaseo/protocol/messages";
 import { resolveCallerAgentId } from "../../utils/caller-agent.js";
 import { connectToDaemon } from "../../utils/client.js";

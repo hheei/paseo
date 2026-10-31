@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { resolveHookActivity, type AgentHookActivityState } from "@getpaseo/server/agent-hooks";
+import { resolveHookActivity, type AgentHookActivityState } from "@hheei/paseo-server/agent-hooks";
 
 interface HookEnvironment {
   PASEO_TERMINAL_ID?: string;

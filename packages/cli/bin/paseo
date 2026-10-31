@@ -1,3 +1,9 @@
-#!/usr/bin/env -S node --disable-warning=DEP0040
-import '../dist/index.js'
-
+#!/bin/sh
+SCRIPT="$0"
+while [ -L "$SCRIPT" ]; do
+  DIR="$(cd -P "$(dirname "$SCRIPT")" && pwd)"
+  SCRIPT="$(readlink "$SCRIPT")"
+  [ "${SCRIPT#/}" = "$SCRIPT" ] && SCRIPT="$DIR/$SCRIPT"
+done
+DIR="$(cd -P "$(dirname "$SCRIPT")" && pwd)"
+exec node --disable-warning=DEP0040 "$DIR/../dist/index.js" "$@"

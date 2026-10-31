@@ -5,7 +5,7 @@ import {
   DaemonInstanceError,
   retryUnconfirmedTerminalCleanup,
   TerminalCleanupNotConfirmedError,
-} from "@getpaseo/server/daemon-control";
+} from "@hheei/paseo-server/daemon-control";
 import { setTimeout as delay } from "node:timers/promises";
 import type { DaemonGetStatusResponse } from "@getpaseo/protocol/messages";
 import { connectToDaemon } from "../../utils/client.js";

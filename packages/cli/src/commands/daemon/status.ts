@@ -5,8 +5,8 @@ import {
   daemonLogPath,
   isSameDaemonInstance,
   DaemonInstanceError,
-} from "@getpaseo/server/daemon-control";
-import { readPersistedConfig, resolveConfigFromPersisted } from "@getpaseo/server/configuration";
+} from "@hheei/paseo-server/daemon-control";
+import { readPersistedConfig, resolveConfigFromPersisted } from "@hheei/paseo-server/configuration";
 import { connectToDaemon, buildDaemonConnectionCommandError } from "../../utils/client.js";
 import { withOutput, toCommandError, type CommandOptions } from "../../output/index.js";
 import { addJsonAndDaemonHostOptions } from "../../utils/command-options.js";

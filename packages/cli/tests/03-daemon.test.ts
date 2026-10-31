@@ -51,13 +51,13 @@ async function stopChildProcess(child: ChildProcess): Promise<void> {
 }
 
 function resolveDaemonWorkerEntry(): string {
-  let currentDir = dirname(require.resolve("@getpaseo/server"));
+  let currentDir = dirname(require.resolve("@hheei/paseo-server"));
 
   while (true) {
     const packageJsonPath = join(currentDir, "package.json");
     if (existsSync(packageJsonPath)) {
       const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf-8"));
-      if (packageJson.name === "@getpaseo/server") {
+      if (packageJson.name === "@hheei/paseo-server") {
         const candidates = [
           join(currentDir, "dist", "server", "server", "daemon-worker.js"),
           join(currentDir, "src", "server", "daemon-worker.ts"),
@@ -73,7 +73,7 @@ function resolveDaemonWorkerEntry(): string {
     currentDir = parentDir;
   }
 
-  throw new Error("Unable to resolve @getpaseo/server package root");
+  throw new Error("Unable to resolve @hheei/paseo-server package root");
 }
 
 async function tailDaemonLog(): Promise<string> {

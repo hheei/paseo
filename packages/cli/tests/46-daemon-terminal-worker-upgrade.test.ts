@@ -2,7 +2,7 @@
 
 /**
  * A terminal worker survives an upgrade of the installation that started it. Two disposable
- * installations A and B (built dist, real copies of @getpaseo/server, @getpaseo/cli and
+ * installations A and B (built dist, real copies of @hheei/paseo-server, @getpaseo/cli and
  * node-pty, every other dependency a symlink into this repo) each get their own CLI shim, so
  * each daemon's PASEO_CLI is a distinct path:
  *
@@ -114,7 +114,7 @@ function createInstallation(name: string, version: string): Installation {
     recursive: true,
   });
 
-  const taken = new Set(["@getpaseo/server", "@getpaseo/cli", "node-pty"]);
+  const taken = new Set(["@hheei/paseo-server", "@getpaseo/cli", "node-pty"]);
   for (const source of [
     "packages/server/node_modules",
     "packages/cli/node_modules",

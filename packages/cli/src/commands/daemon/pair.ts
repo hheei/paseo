@@ -1,13 +1,13 @@
 import { confirm, isCancel, log } from "@clack/prompts";
 import { Command } from "commander";
 import chalk from "chalk";
-import { generateLocalPairingOffer } from "@getpaseo/server/pairing";
-import { readDaemonInstance } from "@getpaseo/server/daemon-control";
+import { generateLocalPairingOffer } from "@hheei/paseo-server/pairing";
+import { readDaemonInstance } from "@hheei/paseo-server/daemon-control";
 import {
   readPersistedConfig,
   editPersistedConfig,
   resolveConfigFromPersisted,
-} from "@getpaseo/server/configuration";
+} from "@hheei/paseo-server/configuration";
 import { connectToDaemon } from "../../utils/client.js";
 import type { DaemonTarget } from "../../utils/daemon-target.js";
 import { addJsonAndDaemonHostOptions, withGlobalOptions } from "../../utils/command-options.js";
